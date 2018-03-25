@@ -14,7 +14,7 @@ class Carousel extends React.Component {
   }
 
   nextPhotos() {
-    this.setState({currentPage: (this.state.currentPage + 1 % this.pics.length)});
+    this.setState({currentPage: ((this.state.currentPage + 1) % this.pics.length)});
   }
 
 
@@ -23,9 +23,11 @@ class Carousel extends React.Component {
   render () {
     return(
       <div>
-        <div></div>
-        <CarouselList pics={this.pics[this.state.currentPage]} />
-        <div></div>
+        <div className="photo-scroll-container">
+          <div className="scroll-arrow"><i className="far fa fa-angle-left angles"></i></div>
+          <CarouselList pics={this.pics[this.state.currentPage]} />
+          <div className="scroll-arrow" onClick={this.nextPhotos}><i className="far fa fa-angle-right angles"></i></div>
+        </div>
       </div>
     );
   }

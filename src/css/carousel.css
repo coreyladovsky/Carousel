@@ -1,0 +1,23 @@
+.photo-scroll-container {
+  width: 1218px;
+  display: flex;
+  margin: auto;
+}
+
+.scroll-arrow {
+  width: 70px;
+  display: table;
+  height: 325px;
+  text-align: center;
+  font-size: 90px;
+  color: lightgray;
+}
+
+.scroll-arrow:hover {
+  cursor: pointer;
+}
+
+.angles {
+  display: table-cell;
+  vertical-align: middle;
+}
