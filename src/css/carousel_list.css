@@ -1,0 +1,18 @@
+.photo-list-item {
+  list-style: none;
+  height: 325px;
+  margin-left: 10px;
+}
+
+.photo-list-item img {
+  height: 325px;
+  width: 257px;
+  object-fit: cover;
+}
+
+.photo-ul {
+  -webkit-padding-start: 0px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1117px;
+}
