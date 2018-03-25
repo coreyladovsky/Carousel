@@ -12,6 +12,14 @@ class Carousel extends React.Component {
     };
     this.nextPhotos = this.nextPhotos.bind(this);
     this.lastPhotos = this.lastPhotos.bind(this);
+    this.setPhoto = this.setPhoto.bind(this);
+  }
+
+  setPhoto(e) {
+    if (e.target.value) {
+      let nextPage = parseInt(e.target.value);
+      this.setState({ currentPage: nextPage });
+    }
   }
 
   nextPhotos() {
@@ -43,6 +51,32 @@ class Carousel extends React.Component {
             <i className="far fa fa-angle-right angles" />
           </div>
         </div>
+        <ul className="radio-container" onClick={this.setPhoto}>
+          <input
+            type="radio"
+            name="photo-select"
+            value="0"
+            checked={this.state.currentPage === 0 ? "checked" : ""}
+          />
+          <input
+            type="radio"
+            name="photo-select"
+            value="1"
+            checked={this.state.currentPage === 1 ? "checked" : ""}
+          />
+          <input
+            type="radio"
+            name="photo-select"
+            value="2"
+            checked={this.state.currentPage === 2 ? "checked" : ""}
+          />
+          <input
+            type="radio"
+            name="photo-select"
+            value="3"
+            checked={this.state.currentPage === 3 ? "checked" : ""}
+          />
+        </ul>
       </div>
     );
   }
