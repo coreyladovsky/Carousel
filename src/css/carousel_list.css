@@ -1,7 +1,7 @@
 .photo-list-item {
   list-style: none;
   height: 325px;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .photo-list-item img {
@@ -14,9 +14,14 @@
   -webkit-padding-start: 0px;
   display: flex;
   justify-content: space-between;
-  max-width: 1117px;
+  width: 1218px;
+  /*
   position: relative;
-  overflow: hidden;
+  overflow: hidden; */
+}
+
+.photo-ul li:first-child {
+  margin-left: 0px;
 }
 
 @keyframes rightSlideIn {
@@ -28,21 +33,21 @@
   }
 }
 
-@keyframes rightSlideOut {
+/* @keyframes rightSlideOut {
   0% {
-    margin-left: 100%;
+    margin-right: 0%;
   }
   100% {
-    margin-left: 0%;
+    margin-right: 100%;
   }
-}
+} */
 
 @keyframes leftSlideIn {
   0% {
-    margin-left: 100%;
+    margin-right: 100%;
   }
   100% {
-    margin-left: 0%;
+    left: 0%;
   }
 }
 
@@ -54,8 +59,12 @@
     margin-left: 0%;
   }
 }
-
-.photo-ul {
+.slide-out-left {
   animation-duration: .5s;
-  animation-name: rightSlide;
+  animation-name: leftSlideOut;
+}
+
+.slide-left {
+  animation-duration: .5s;
+  animation-name: rightSlideIn;
 }

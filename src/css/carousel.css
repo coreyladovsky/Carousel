@@ -3,6 +3,11 @@
   display: flex;
   margin: auto;
 }
+.all-images {
+  display: flex;
+  width: 1218px;
+  overflow: hidden;
+}
 
 .scroll-arrow {
   width: 70px;

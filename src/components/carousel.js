@@ -11,9 +11,11 @@ class Carousel extends React.Component {
     this.state = {
       currentPage: 0
     };
+    this.currentPage = 0;
     this.nextPhotos = this.nextPhotos.bind(this);
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
+    this.changeImage = this.changeImage.bind(this);
   }
 
   setPhoto(e) {
@@ -27,14 +29,29 @@ class Carousel extends React.Component {
     }
   }
 
+  changeImage() {
+    debugger
+    $(".photo-ul").css("left", `${-1218 * this.currentPage}px`)
+  }
+
   nextPhotos() {
-    $("photo-ul").addClass("slide-left")
+    // this.currentPage++;
+    // if(this.currentPage >= this.pics.length) {
+    //   this.currentPage = 0;
+    // }
+    // $(".photo-ul").removeClass("slide-left")
     this.setState({
       currentPage: (this.state.currentPage + 1) % this.pics.length
     });
+    // $(".photo-ul").addClass("slide-left")
+    // this.changeImage();
   }
 
   lastPhotos() {
+    // this.currentPage-- ;
+    // if(this.currentPage < 0) {
+    //   this.currentPage = this.pics.length - 1;
+    // }
     let lastPhoto = this.state.currentPage - 1;
     if (lastPhoto < 0) {
       this.setState({ currentPage: this.pics.length - 1 });
@@ -43,6 +60,7 @@ class Carousel extends React.Component {
         currentPage: (this.state.currentPage - 1) % this.pics.length
       });
     }
+    // this.changeImage();
   }
 
   render() {
@@ -52,7 +70,13 @@ class Carousel extends React.Component {
           <div className="scroll-arrow" onClick={this.lastPhotos}>
             <i className="far fa fa-angle-left angles" />
           </div>
-          <CarouselList pics={this.pics[this.state.currentPage]} className="no-animation" />
+          <div className="all-images">
+          {this.state.currentPage == 0 ?  <CarouselList pics={this.pics[0]} /> : null }
+          {this.state.currentPage == 1 ?  <CarouselList pics={this.pics[1]} /> : null }
+          {this.state.currentPage == 2 ?  <CarouselList pics={this.pics[2]} /> : null }
+          {this.state.currentPage == 3 ?  <CarouselList pics={this.pics[3]} /> : null }
+
+          </div>
           <div className="scroll-arrow" onClick={this.nextPhotos}>
             <i className="far fa fa-angle-right angles" />
           </div>
