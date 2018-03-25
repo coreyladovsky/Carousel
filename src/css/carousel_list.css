@@ -15,4 +15,47 @@
   display: flex;
   justify-content: space-between;
   max-width: 1117px;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes rightSlideIn {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes rightSlideOut {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes leftSlideIn {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes leftSlideOut {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+.photo-ul {
+  animation-duration: .5s;
+  animation-name: rightSlide;
 }

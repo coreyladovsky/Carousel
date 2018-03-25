@@ -21,21 +21,17 @@
   display: table-cell;
   vertical-align: middle;
 }
-.input-container input {
-  /* opacity: 0; */
-  cursor: pointer;
+.radio-containter-master {
+  width: 1218px;
+  margin: auto;
 }
 
-.input-container:checked {
-  background-color: black;
-}
-
-.input-container {
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  border: 1px solid lightgray;
-  tranform: scale(0.9);
+.radio-container {
+  display: flex;
+  justify-content: space-between;
+  width: 146px;
+  margin: auto;
+  -webkit-padding-start: 0;
 }
 
 .radio {
