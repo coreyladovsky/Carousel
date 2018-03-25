@@ -21,3 +21,38 @@
   display: table-cell;
   vertical-align: middle;
 }
+.input-container input {
+  /* opacity: 0; */
+  cursor: pointer;
+}
+
+.input-container:checked {
+  background-color: black;
+}
+
+.input-container {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+  tranform: scale(0.9);
+}
+
+.radio {
+  height: 13px;
+  width: 13px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+}
+
+.radio:hover {
+  cursor: pointer;
+}
+
+.checked {
+  height: 13px;
+  width: 13px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  background: black;
+}

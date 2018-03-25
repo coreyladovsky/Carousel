@@ -2,6 +2,7 @@ import React from "react";
 import { pictures } from "../imports/imports.js";
 import CarouselList from "./carousel_list.js";
 import "../css/carousel.css";
+import $ from 'jquery';
 
 class Carousel extends React.Component {
   constructor() {
@@ -16,8 +17,10 @@ class Carousel extends React.Component {
   }
 
   setPhoto(e) {
-    if (e.target.value) {
-      let nextPage = parseInt(e.target.value);
+    if (e.target.attributes.value.value) {
+      $(".checked").removeClass("checked").addClass("radio");
+        $(e.target).addClass("checked");
+      let nextPage = parseInt(e.target.attributes.value.value);
       this.setState({ currentPage: nextPage });
     }
   }
@@ -52,31 +55,24 @@ class Carousel extends React.Component {
           </div>
         </div>
         <ul className="radio-container" onClick={this.setPhoto}>
-          <input
-            type="radio"
-            name="photo-select"
-            value="0"
-            checked={this.state.currentPage === 0 ? "checked" : ""}
-          />
-          <input
-            type="radio"
-            name="photo-select"
-            value="1"
-            checked={this.state.currentPage === 1 ? "checked" : ""}
-          />
-          <input
-            type="radio"
-            name="photo-select"
-            value="2"
-            checked={this.state.currentPage === 2 ? "checked" : ""}
-          />
-          <input
-            type="radio"
-            name="photo-select"
-            value="3"
-            checked={this.state.currentPage === 3 ? "checked" : ""}
-          />
-        </ul>
+
+            <div
+              value="0"
+              className={this.state.currentPage === 0 ? "radio checked" : "radio"}
+            ></div>
+
+            <div
+              value="1"
+              className={this.state.currentPage === 1 ? "radio checked" : "radio"}
+            ></div>
+            <div
+              value="2"
+              className={this.state.currentPage === 2 ? "radio checked" : "radio"}
+            ></div>
+            <div
+              value="3"
+              className={this.state.currentPage === 3 ? "radio checked" : "radio"}
+            ></div>        </ul>
       </div>
     );
   }
