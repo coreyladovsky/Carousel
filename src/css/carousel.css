@@ -4,9 +4,10 @@
   margin: auto;
 }
 .all-images {
-  display: flex;
+  /* display: flex; */
   width: 1218px;
   overflow: hidden;
+  position: relative;
 }
 
 .scroll-arrow {
