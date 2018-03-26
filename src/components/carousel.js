@@ -9,7 +9,8 @@ class Carousel extends React.Component {
     super();
     this.pics = pictures;
     this.state = {
-      currentPage: 0
+      currentPage: 0,
+      nextPage: 0
     };
     this.currentPage = 0;
     this.nextPhotos = this.nextPhotos.bind(this);
@@ -30,36 +31,57 @@ class Carousel extends React.Component {
   }
 
   changeImage() {
-    debugger
-    $(".photo-ul").css("left", `${-1218 * this.currentPage}px`)
+    $(".photo-ul").css("left", `${-1218 * this.currentPage}px`);
   }
 
   nextPhotos() {
-    // this.currentPage++;
-    // if(this.currentPage >= this.pics.length) {
-    //   this.currentPage = 0;
-    // }
-    // $(".photo-ul").removeClass("slide-left")
-    this.setState({
-      currentPage: (this.state.currentPage + 1) % this.pics.length
-    });
-    // $(".photo-ul").addClass("slide-left")
-    // this.changeImage();
+    this.setState({nextPage: (this.state.currentPage + 1) % this.pics.length });
+    $(".nextPage").addClass("slideInRight");
+    $(".currentPage").addClass("slideOutRight");
+    setTimeout(() => {
+      this.setState({
+        currentPage: this.state.nextPage
+      });
+      $(".nextPage").removeClass("slideInRight");
+      $(".currentPage").removeClass("slideOutRight");
+
+    }, 500);
+
   }
 
   lastPhotos() {
+    // debugger
+    let lastPhoto = this.state.currentPage - 1;
+    if (lastPhoto < 0) {
+      this.setState({ nextPage: this.pics.length - 1 });
+    } else {
+      this.setState({
+        nextPage: (this.state.currentPage - 1) % this.pics.length
+      });
+    }
+    $(".nextPage").addClass("slideInLeft");
+    $(".currentPage").addClass("slideOutLeft");
+    setTimeout(() => {
+      this.setState({
+        currentPage: this.state.nextPage
+      });
+      $(".nextPage").removeClass("slideInLeft");
+      $(".currentPage").removeClass("slideOutLeft");
+
+    }, 500);
+
     // this.currentPage-- ;
     // if(this.currentPage < 0) {
     //   this.currentPage = this.pics.length - 1;
     // }
-    let lastPhoto = this.state.currentPage - 1;
-    if (lastPhoto < 0) {
-      this.setState({ currentPage: this.pics.length - 1 });
-    } else {
-      this.setState({
-        currentPage: (this.state.currentPage - 1) % this.pics.length
-      });
-    }
+    // let lastPhoto = this.state.currentPage - 1;
+    // if (lastPhoto < 0) {
+    //   this.setState({ currentPage: this.pics.length - 1 });
+    // } else {
+    //   this.setState({
+    //     currentPage: (this.state.currentPage - 1) % this.pics.length
+    //   });
+    // }
     // this.changeImage();
   }
 
@@ -71,10 +93,9 @@ class Carousel extends React.Component {
             <i className="far fa fa-angle-left angles" />
           </div>
           <div className="all-images">
-          {this.state.currentPage == 0 ?  <CarouselList pics={this.pics[0]} /> : null }
-          {this.state.currentPage == 1 ?  <CarouselList pics={this.pics[1]} /> : null }
-          {this.state.currentPage == 2 ?  <CarouselList pics={this.pics[2]} /> : null }
-          {this.state.currentPage == 3 ?  <CarouselList pics={this.pics[3]} /> : null }
+
+          <CarouselList pics={this.pics[this.state.currentPage]} classy="carousel currentPage" />
+          <CarouselList pics={this.pics[this.state.nextPage]} classy="carousel nextPage"/>
 
           </div>
           <div className="scroll-arrow" onClick={this.nextPhotos}>

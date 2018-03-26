@@ -24,6 +24,26 @@
   margin-left: 0px;
 }
 
+.slideInRight {
+  animation-duration: .5s;
+  animation-name: rightSlideIn;
+}
+
+.slideOutRight {
+  animation-duration: .5s;
+  animation-name: rightSlideOut;
+}
+
+.slideInLeft {
+  animation-duration: .5s;
+  animation-name: leftSlideIn;
+}
+
+.slideOutLeft {
+  animation-duration: .5s;
+  animation-name: leftSlideOut;
+}
+
 @keyframes rightSlideIn {
   0% {
     margin-left: 100%;
@@ -33,33 +53,33 @@
   }
 }
 
-/* @keyframes rightSlideOut {
+@keyframes rightSlideOut {
   0% {
-    margin-right: 0%;
+    margin-left: 0%;
   }
   100% {
-    margin-right: 100%;
+    margin-left: -100%;
   }
-} */
+}
 
 @keyframes leftSlideIn {
   0% {
     margin-right: 100%;
   }
   100% {
-    left: 0%;
+    margin-right: 0%;
   }
 }
 
 @keyframes leftSlideOut {
   0% {
-    margin-left: 100%;
-  }
-  100% {
     margin-left: 0%;
   }
+  100% {
+    margin-left: 100%;
+  }
 }
-.slide-out-left {
+/* .slide-out-left {
   animation-duration: .5s;
   animation-name: leftSlideOut;
 }
@@ -67,4 +87,4 @@
 .slide-left {
   animation-duration: .5s;
   animation-name: rightSlideIn;
-}
+} */

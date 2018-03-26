@@ -11,7 +11,7 @@ class CarouselList extends React.Component {
       );
     });
     return(
-      <ul className="photo-ul">
+      <ul className={`photo-ul ${this.props.classy}`} >
         {pics}
       </ul>
     );
