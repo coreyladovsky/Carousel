@@ -13,12 +13,9 @@
 .photo-ul {
   -webkit-padding-start: 0px;
   display: flex;
-  justify-content: space-between;
   width: 1218px;
   position: absolute;
-  /*
-  position: relative;
-  overflow: hidden; */
+
 }
 
 .photo-ul li:first-child {

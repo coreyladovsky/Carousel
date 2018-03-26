@@ -107,26 +107,26 @@ class Carousel extends React.Component {
             <div
               value="0"
               className={
-                this.state.currentPage === 0 ? "radio checked" : "radio"
+                this.state.nextPage === 0 ? "radio checked" : "radio"
               }
             />
 
             <div
               value="1"
               className={
-                this.state.currentPage === 1 ? "radio checked" : "radio"
+                this.state.nextPage === 1 ? "radio checked" : "radio"
               }
             />
             <div
               value="2"
               className={
-                this.state.currentPage === 2 ? "radio checked" : "radio"
+                this.state.nextPage === 2 ? "radio checked" : "radio"
               }
             />
             <div
               value="3"
               className={
-                this.state.currentPage === 3 ? "radio checked" : "radio"
+                this.state.nextPage === 3 ? "radio checked" : "radio"
               }
             />
           </ul>
