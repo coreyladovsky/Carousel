@@ -17,6 +17,17 @@ class Carousel extends React.Component {
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
     this.changeImage = this.changeImage.bind(this);
+    this.scrollToPhoto = this.scrollToPhoto.bind(this);
+  }
+
+  componentDidMount() {
+    $("html").on("keydown", (e)=> {
+      if(e.originalEvent.key === "ArrowRight") {
+        this.nextPhotos();
+      } else if(e.originalEvent.key === "ArrowLeft") {
+        this.lastPhotos();
+      }
+    });
   }
 
   setPhoto(e) {
@@ -66,11 +77,15 @@ class Carousel extends React.Component {
     this.changeImage("slideInLeft", "slideOutLeft");
   }
 
+  scrollToPhoto(e) {
+      debugger
+  }
+
   render() {
     return (
       <div>
-        <div className="photo-scroll-container">
-          <div className="scroll-arrow" onClick={this.lastPhotos}>
+        <div className="photo-scroll-container" >
+          <div className="scroll-arrow" onClick={this.lastPhotos} >
             <i className="far fa fa-angle-left angles" />
           </div>
           <div className="all-images">
