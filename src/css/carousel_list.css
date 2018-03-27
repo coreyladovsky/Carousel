@@ -77,15 +77,6 @@
     margin-left: 100%;
   }
 }
-/* .slide-out-left {
-  animation-duration: .5s;
-  animation-name: leftSlideOut;
-}
-
-.slide-left {
-  animation-duration: .5s;
-  animation-name: rightSlideIn;
-} */
 
 @media only screen and (max-width: 1200px) {
   .photo-ul {
@@ -122,6 +113,24 @@
 
 
 
+}
+
+
+
+
+@media only screen and (max-width: 320px) {
+  .photo-ul {
+    width: 524px;
+  }
+
+  .photo-list-item {
+    margin-left: 5px;
+    height: 218;
+  }
+
+  .photo-list-item img {
+    width: 170px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
