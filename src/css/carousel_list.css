@@ -123,3 +123,12 @@
 
 
 }
+
+@media only screen and (max-width: 480px) {
+  .photo-list-item img {
+    width: 203px;
+  }
+  .photo-list-item {
+    height: 270px;
+  }
+}

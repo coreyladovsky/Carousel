@@ -127,6 +127,10 @@
   .photo-scroll-container {
     background: pink;
   }
+
+  .all-images {
+    height: 83%;
+  }
 }
 
 @media only screen and (max-width: 320px) {
