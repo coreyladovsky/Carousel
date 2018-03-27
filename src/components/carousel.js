@@ -16,7 +16,8 @@ class Carousel extends React.Component {
     this.nextPhotos = this.nextPhotos.bind(this);
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
-    this.changeImage = this.changeImage.bind(this);
+    this.photoForward = this.photoForward.bind(this);
+    // this.changeImage = this.changeImage.bind(this);
   }
 
   setPhoto(e) {
@@ -25,17 +26,13 @@ class Carousel extends React.Component {
         .removeClass("checked")
         .addClass("radio");
       $(e.target).addClass("checked");
-      let nextPage = parseInt(e.target.attributes.value.value);
-      this.setState({ currentPage: nextPage });
+      let upcomming = parseInt(e.target.attributes.value.value);
+      this.setState({ nextPage: upcomming });
+      this.photoForward();
     }
   }
 
-  changeImage() {
-    $(".photo-ul").css("left", `${-1218 * this.currentPage}px`);
-  }
-
-  nextPhotos() {
-    this.setState({nextPage: (this.state.currentPage + 1) % this.pics.length });
+  photoForward() {
     $(".nextPage").addClass("slideInRight");
     $(".currentPage").addClass("slideOutRight");
     setTimeout(() => {
@@ -46,7 +43,15 @@ class Carousel extends React.Component {
       $(".currentPage").removeClass("slideOutRight");
 
     }, 500);
+  }
 
+  // changeImage() {
+  //   $(".photo-ul").css("left", `${-1218 * this.currentPage}px`);
+  // }
+
+  nextPhotos() {
+    this.setState({nextPage: (this.state.currentPage + 1) % this.pics.length });
+    this.photoForward();
   }
 
   lastPhotos() {
@@ -70,19 +75,6 @@ class Carousel extends React.Component {
 
     }, 500);
 
-    // this.currentPage-- ;
-    // if(this.currentPage < 0) {
-    //   this.currentPage = this.pics.length - 1;
-    // }
-    // let lastPhoto = this.state.currentPage - 1;
-    // if (lastPhoto < 0) {
-    //   this.setState({ currentPage: this.pics.length - 1 });
-    // } else {
-    //   this.setState({
-    //     currentPage: (this.state.currentPage - 1) % this.pics.length
-    //   });
-    // }
-    // this.changeImage();
   }
 
   render() {
