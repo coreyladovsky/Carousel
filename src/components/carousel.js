@@ -3,6 +3,7 @@ import { pictures } from "../imports/imports.js";
 import CarouselList from "./carousel_list.js";
 import "../css/carousel.css";
 import $ from "jquery";
+import Swipeable from "react-swipeable";
 
 class Carousel extends React.Component {
   constructor() {
@@ -17,14 +18,13 @@ class Carousel extends React.Component {
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
     this.changeImage = this.changeImage.bind(this);
-    this.scrollToPhoto = this.scrollToPhoto.bind(this);
   }
 
   componentDidMount() {
-    $("html").on("keydown", (e)=> {
-      if(e.originalEvent.key === "ArrowRight") {
+    $("html").on("keydown", e => {
+      if (e.originalEvent.key === "ArrowRight") {
         this.nextPhotos();
-      } else if(e.originalEvent.key === "ArrowLeft") {
+      } else if (e.originalEvent.key === "ArrowLeft") {
         this.lastPhotos();
       }
     });
@@ -77,31 +77,35 @@ class Carousel extends React.Component {
     this.changeImage("slideInLeft", "slideOutLeft");
   }
 
-  scrollToPhoto(e) {
-      debugger
-  }
-
   render() {
     return (
       <div>
-        <div className="photo-scroll-container" >
-          <div className="scroll-arrow" onClick={this.lastPhotos} >
-            <i className="far fa fa-angle-left angles" />
+        <Swipeable
+          className="swipable"
+          trackMouse
+          preventDefaultTouchmoveEvent
+          onSwipedLeft={this.nextPhotos}
+          onSwipedRight={this.lastPhotos}
+        >
+          <div className="photo-scroll-container">
+            <div className="scroll-arrow" onClick={this.lastPhotos}>
+              <i className="far fa fa-angle-left angles" />
+            </div>
+            <div className="all-images">
+              <CarouselList
+                pics={this.pics[this.state.currentPage]}
+                classy="carousel currentPage"
+              />
+              <CarouselList
+                pics={this.pics[this.state.nextPage]}
+                classy="carousel nextPage"
+              />
+            </div>
+            <div className="scroll-arrow" onClick={this.nextPhotos}>
+              <i className="far fa fa-angle-right angles" />
+            </div>
           </div>
-          <div className="all-images">
-            <CarouselList
-              pics={this.pics[this.state.currentPage]}
-              classy="carousel currentPage"
-            />
-            <CarouselList
-              pics={this.pics[this.state.nextPage]}
-              classy="carousel nextPage"
-            />
-          </div>
-          <div className="scroll-arrow" onClick={this.nextPhotos}>
-            <i className="far fa fa-angle-right angles" />
-          </div>
-        </div>
+        </Swipeable>
         <div className="radio-containter-master">
           <ul className="radio-container" onClick={this.setPhoto}>
             <div
