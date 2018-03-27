@@ -86,3 +86,30 @@
   animation-duration: .5s;
   animation-name: rightSlideIn;
 } */
+
+@media only screen and (max-width: 1200px) {
+  .photo-ul {
+    width: 992px;
+  }
+  .photo-list-item img {
+    width: 206px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .photo-ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 544px;
+  }
+  .photo-list-item img {
+    width: 257px;
+    height: auto;
+  }
+
+  .photo-ul li:first-child {
+    margin-left: 15px;
+  }
+}
