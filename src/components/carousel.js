@@ -16,8 +16,7 @@ class Carousel extends React.Component {
     this.nextPhotos = this.nextPhotos.bind(this);
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
-    this.photoForward = this.photoForward.bind(this);
-    // this.changeImage = this.changeImage.bind(this);
+    this.changeImage = this.changeImage.bind(this);
   }
 
   setPhoto(e) {
@@ -28,34 +27,34 @@ class Carousel extends React.Component {
       $(e.target).addClass("checked");
       let upcomming = parseInt(e.target.attributes.value.value);
       this.setState({ nextPage: upcomming });
-      this.photoForward();
+      if (upcomming > this.state.currentPage) {
+        this.changeImage("slideInRight", "slideOutRight");
+      } else {
+        this.changeImage("slideInLeft", "slideOutLeft");
+      }
     }
   }
 
-  photoForward() {
-    $(".nextPage").addClass("slideInRight");
-    $(".currentPage").addClass("slideOutRight");
+  changeImage(str1, str2) {
+    $(".nextPage").addClass(str1);
+    $(".currentPage").addClass(str2);
     setTimeout(() => {
       this.setState({
         currentPage: this.state.nextPage
       });
-      $(".nextPage").removeClass("slideInRight");
-      $(".currentPage").removeClass("slideOutRight");
-
+      $(".nextPage").removeClass(str1);
+      $(".currentPage").removeClass(str2);
     }, 500);
   }
 
-  // changeImage() {
-  //   $(".photo-ul").css("left", `${-1218 * this.currentPage}px`);
-  // }
-
   nextPhotos() {
-    this.setState({nextPage: (this.state.currentPage + 1) % this.pics.length });
-    this.photoForward();
+    this.setState({
+      nextPage: (this.state.currentPage + 1) % this.pics.length
+    });
+    this.changeImage("slideInRight", "slideOutRight");
   }
 
   lastPhotos() {
-    // debugger
     let lastPhoto = this.state.currentPage - 1;
     if (lastPhoto < 0) {
       this.setState({ nextPage: this.pics.length - 1 });
@@ -64,17 +63,7 @@ class Carousel extends React.Component {
         nextPage: (this.state.currentPage - 1) % this.pics.length
       });
     }
-    $(".nextPage").addClass("slideInLeft");
-    $(".currentPage").addClass("slideOutLeft");
-    setTimeout(() => {
-      this.setState({
-        currentPage: this.state.nextPage
-      });
-      $(".nextPage").removeClass("slideInLeft");
-      $(".currentPage").removeClass("slideOutLeft");
-
-    }, 500);
-
+    this.changeImage("slideInLeft", "slideOutLeft");
   }
 
   render() {
@@ -85,10 +74,14 @@ class Carousel extends React.Component {
             <i className="far fa fa-angle-left angles" />
           </div>
           <div className="all-images">
-
-          <CarouselList pics={this.pics[this.state.currentPage]} classy="carousel currentPage" />
-          <CarouselList pics={this.pics[this.state.nextPage]} classy="carousel nextPage"/>
-
+            <CarouselList
+              pics={this.pics[this.state.currentPage]}
+              classy="carousel currentPage"
+            />
+            <CarouselList
+              pics={this.pics[this.state.nextPage]}
+              classy="carousel nextPage"
+            />
           </div>
           <div className="scroll-arrow" onClick={this.nextPhotos}>
             <i className="far fa fa-angle-right angles" />
@@ -98,28 +91,20 @@ class Carousel extends React.Component {
           <ul className="radio-container" onClick={this.setPhoto}>
             <div
               value="0"
-              className={
-                this.state.nextPage === 0 ? "radio checked" : "radio"
-              }
+              className={this.state.nextPage === 0 ? "radio checked" : "radio"}
             />
 
             <div
               value="1"
-              className={
-                this.state.nextPage === 1 ? "radio checked" : "radio"
-              }
+              className={this.state.nextPage === 1 ? "radio checked" : "radio"}
             />
             <div
               value="2"
-              className={
-                this.state.nextPage === 2 ? "radio checked" : "radio"
-              }
+              className={this.state.nextPage === 2 ? "radio checked" : "radio"}
             />
             <div
               value="3"
-              className={
-                this.state.nextPage === 3 ? "radio checked" : "radio"
-              }
+              className={this.state.nextPage === 3 ? "radio checked" : "radio"}
             />
           </ul>
         </div>
