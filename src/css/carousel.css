@@ -71,19 +71,27 @@
   .all-images {
     width: 992px;
   }
+  .radio-containter-master {
+    width: 100%;
+    margin: auto;
+    /* margin-top: 10px; */
+  }
+  .scroll-arrow {
+    height: 273px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
   .photo-scroll-container {
     background: green;
     /* width: 768px; */
-    height: 789px;
+    height: 660px;
 
   }
   .radio-containter-master {
     width: 100%;
     margin: auto;
-    margin-top: 10px;
+    /* margin-top: 10px; */
   }
 
   .all-images {
@@ -100,10 +108,18 @@
     display: flex;
     justify-content: center;
   }
+
+  .scroll-arrow {
+    height: 100%;
+  }
 }
 @media only screen and (max-width: 768px) {
   .photo-scroll-container {
     background: blue;
+  }
+
+  .scroll-arrow {
+    display: none;
   }
 }
 

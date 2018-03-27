@@ -103,6 +103,13 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 544px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+
+  }
+
+  .photo-list-item {
+    margin-top: 5px;
   }
   .photo-list-item img {
     width: 257px;
@@ -112,4 +119,7 @@
   .photo-ul li:first-child {
     margin-left: 15px;
   }
+
+
+
 }
