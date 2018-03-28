@@ -36,7 +36,7 @@ class Carousel extends React.Component {
         .removeClass("checked")
         .addClass("radio");
       $(e.target).addClass("checked");
-      let upcomming = parseInt(e.target.attributes.value.value);
+      let upcomming = parseInt(e.target.attributes.value.value, 10);
       this.setState({ nextPage: upcomming });
       if (upcomming > this.state.currentPage) {
         this.changeImage("slideInRight", "slideOutRight");
@@ -50,6 +50,7 @@ class Carousel extends React.Component {
     return this.pics.map((pic, idx) => {
       return(
         <div
+          key={idx}
           value={idx}
           className={this.state.nextPage === idx ? "radio checked" : "radio"}
         />

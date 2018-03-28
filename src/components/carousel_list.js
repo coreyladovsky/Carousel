@@ -5,7 +5,7 @@ class CarouselList extends React.Component {
   render() {
     let pics = this.props.pics.map((pic, idx) => {
       return (
-        <li className="photo-list-item">
+        <li className="photo-list-item" key={idx}>
           <img key={idx} src={pic} alt="" />
         </li>
       );
