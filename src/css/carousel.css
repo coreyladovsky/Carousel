@@ -62,7 +62,6 @@
 
 @media only screen and (max-width: 1200px) {
   .photo-scroll-container {
-    /* background: red; */
     width: 992px;
   }
   .swipable {
@@ -74,7 +73,6 @@
   .radio-containter-master {
     width: 100%;
     margin: auto;
-    /* margin-top: 10px; */
   }
   .scroll-arrow {
     height: 273px;
@@ -88,15 +86,12 @@
 
 @media only screen and (max-width: 992px) {
   .photo-scroll-container {
-    /* background: green; */
-    /* width: 768px; */
     height: 660px;
 
   }
   .radio-containter-master {
     width: 100%;
     margin: auto;
-    /* margin-top: 10px; */
   }
 
   .all-images {
@@ -121,7 +116,6 @@
 
 @media only screen and (max-width: 768px) {
   .photo-scroll-container {
-    /* background: blue; */
   }
 
   .scroll-arrow {
@@ -131,7 +125,6 @@
 
 @media only screen and (max-width: 480px) {
   .photo-scroll-container {
-    /* background: pink; */
   }
 
   .all-images {
@@ -153,7 +146,6 @@
 
 @media only screen and (max-width: 320px) {
   .photo-scroll-container {
-    /* background: yellow; */
     width: 100%;
     height: 555px
   }

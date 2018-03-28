@@ -13,11 +13,11 @@ class Carousel extends React.Component {
       currentPage: 0,
       nextPage: 0
     };
-    this.currentPage = 0;
     this.nextPhotos = this.nextPhotos.bind(this);
     this.lastPhotos = this.lastPhotos.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
     this.changeImage = this.changeImage.bind(this);
+    this.setDots = this.setDots.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +44,17 @@ class Carousel extends React.Component {
         this.changeImage("slideInLeft", "slideOutLeft");
       }
     }
+  }
+
+  setDots() {
+    return this.pics.map((pic, idx) => {
+      return(
+        <div
+          value={idx}
+          className={this.state.nextPage === idx ? "radio checked" : "radio"}
+        />
+      );
+    });
   }
 
   changeImage(str1, str2) {
@@ -108,23 +119,7 @@ class Carousel extends React.Component {
         </Swipeable>
         <div className="radio-containter-master">
           <ul className="radio-container" onClick={this.setPhoto}>
-            <div
-              value="0"
-              className={this.state.nextPage === 0 ? "radio checked" : "radio"}
-            />
-
-            <div
-              value="1"
-              className={this.state.nextPage === 1 ? "radio checked" : "radio"}
-            />
-            <div
-              value="2"
-              className={this.state.nextPage === 2 ? "radio checked" : "radio"}
-            />
-            <div
-              value="3"
-              className={this.state.nextPage === 3 ? "radio checked" : "radio"}
-            />
+            {this.setDots()}
           </ul>
         </div>
       </div>
