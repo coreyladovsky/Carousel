@@ -95,7 +95,6 @@ class Carousel extends React.Component {
         <Swipeable
           className="swipable"
           trackMouse
-          preventDefaultTouchmoveEvent
           onSwipedLeft={this.nextPhotos}
           onSwipedRight={this.lastPhotos}
         >
